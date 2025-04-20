@@ -1,1047 +1,283 @@
-/* GLOBAL STYLES */
-:root {
-  --bs-body-bg-light: #FDF5E6; /* Fondo crema para modo claro */
-  --bs-body-bg-dark: #212529; /* Fondo gris oscuro para modo oscuro */
-  --navbar-bg-light: #A8E4A0; /* Verde pastel en modo claro */
-  --navbar-bg-dark: #7ABF78; /* Verde pastel en modo oscuro */
-  --link-hover-light: #FF9999; /* Rosa pastel en modo claro */
-  --link-hover-dark: #E67E87; /* Rosa pastel en modo oscuro */
-  --btn-primary-light: #FF9999; /* Rosa pastel en modo claro */
-  --btn-primary-dark: #E67E87; /* Rosa pastel en modo oscuro */
-  --btn-primary-hover-light: #FFB6C1; /* Rosa claro en hover (modo claro) */
-  --btn-primary-hover-dark: #F4A1A8; /* Rosa claro en hover (modo oscuro) */
-  --btn-secondary-light: #A8E4A0; /* Verde pastel en modo claro */
-  --btn-secondary-dark: #7ABF78; /* Verde pastel en modo oscuro */
-  --btn-secondary-hover-light: #B5EAD7; /* Verde claro en hover (modo claro) */
-  --btn-secondary-hover-dark: #9FD8A0; /* Verde claro en hover (modo oscuro) */
-}
-
-html[data-bs-theme="light"] {
-  --bs-body-bg: var(--bs-body-bg-light);
-}
-
-html[data-bs-theme="dark"] {
-  --bs-body-bg: var(--bs-body-bg-dark);
-}
-
-body {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-  color: rgb(var(--bs-tertiary-color-rgb));
-  background-color: var(--bs-body-bg);
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* NAVBAR */
-.navbar {
-  background-color: var(--navbar-bg-light) !important; /* Añadí !important para mayor especificidad */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s ease;
-}
-
-.navbar .container-fluid {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.navbar-brand,
-.nav-link {
-  color: #FFFFFF;
-}
-
-.nav-link:hover {
-  color: var(--link-hover-light);
-  transition: color 0.3s ease;
-}
-
-.nav-link.disabled {
-  color: rgba(255, 255, 255, 0.5);
-}
-
-html[data-bs-theme="dark"] .navbar {
-  background-color: var(--navbar-bg-dark) !important; /* Añadí !important para mayor especificidad */
-}
-
-html[data-bs-theme="dark"] .nav-link:hover {
-  color: var(--link-hover-dark);
-}
-
-.navbar-nav {
-  display: flex;
-  justify-content: flex-start;
-  gap: 1rem;
-}
-
-.nav-link {
-  padding: 0.5rem 0.75rem;
-}
-
-.social-icons {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: 1rem;
-}
-
-.social-icons img {
-  width: 24px;
-  height: 24px;
-}
-
-/* CAROUSEL */
-.carousel {
-  margin-bottom: 3rem;
-}
-
-.carousel-caption {
-  bottom: 3rem;
-  z-index: 10;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
-}
-
-.carousel-item.active .carousel-caption {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.carousel-item:not(.active) .carousel-caption {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-html[data-bs-theme="dark"] .carousel-caption {
-  color: #FFFFFF;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.carousel-item {
-  height: 32rem;
-  position: relative;
-  overflow: hidden;
-}
-
-.carousel-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.carousel-inner {
-  width: 100%;
-  overflow: hidden;
-}
-
-/* MARKETING CONTENT */
-.marketing .col-lg-4 {
-  margin-bottom: 1rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.marketing .col-lg-4 h2 {
-  font-size: 1.5rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.marketing .col-lg-4 p {
-  margin: 0.5rem auto;
-  font-size: 1rem;
-  max-width: 90%;
-}
-
-.marketing .rounded-circle {
-  width: 140px;
-  height: 140px;
-  object-fit: cover;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* FEATURETTES */
-.featurette-divider {
-  margin: 3rem 0;
-}
-
-.featurette-heading {
-  letter-spacing: -0.03rem;
-  color: var(--navbar-bg-light);
-  font-size: 2.5rem;
-  transition: color 0.3s ease;
-}
-
-.featurette-heading .text-body-secondary {
-  color: var(--link-hover-light);
-  font-size: 2.5rem;
-  transition: color 0.3s ease;
-}
-
-.featurette .lead {
-  font-size: 1.25rem;
-}
-
-html[data-bs-theme="dark"] .featurette-heading {
-  color: var(--navbar-bg-dark);
-}
-
-html[data-bs-theme="dark"] .featurette-heading .text-body-secondary {
-  color: var(--link-hover-dark);
-}
-
-.featurette-image {
-  width: 100%;
-  height: auto;
-  max-width: 500px;
-  object-fit: cover;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* BUTTONS */
-.btn-primary {
-  background-color: var(--btn-primary-light);
-  border-color: var(--btn-primary-light);
-  padding: 0.5rem 1rem;
-  transition: background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.btn-primary:hover {
-  background-color: var(--btn-primary-hover-light);
-  border-color: var(--btn-primary-hover-light);
-}
-
-.btn-secondary {
-  background-color: var(--btn-secondary-light);
-  border-color: var(--btn-secondary-light);
-  color: #3A7C5A;
-  padding: 0.5rem 1rem;
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-.btn-secondary:hover {
-  background-color: var(--btn-secondary-hover-light);
-  border-color: var(--btn-secondary-hover-light);
-}
-
-html[data-bs-theme="dark"] .btn-primary {
-  background-color: var(--btn-primary-dark);
-  border-color: var(--btn-primary-dark);
-}
-
-html[data-bs-theme="dark"] .btn-primary:hover {
-  background-color: var(--btn-primary-hover-dark);
-  border-color: var(--btn-primary-hover-dark);
-}
-
-html[data-bs-theme="dark"] .btn-secondary {
-  background-color: var(--btn-secondary-dark);
-  border-color: var(--btn-secondary-dark);
-  color: #FFFFFF;
-}
-
-html[data-bs-theme="dark"] .btn-secondary:hover {
-  background-color: var(--btn-secondary-hover-dark);
-  border-color: var(--btn-secondary-hover-dark);
-}
-
-/* FOOTER */
-footer {
-  padding: 1rem 0;
-  background-color: transparent;
-  text-align: center;
-}
-
-footer .float-end {
-  float: none;
-}
-
-footer a {
-  color: var(--link-hover-light);
-  transition: color 0.3s ease;
-}
-
-footer a:hover {
-  color: var(--btn-primary-hover-light);
-}
-
-html[data-bs-theme="dark"] footer a {
-  color: var(--link-hover-dark);
-}
-
-html[data-bs-theme="dark"] footer a:hover {
-  color: var(--btn-primary-hover-dark);
-}
-
-/* WHATSAPP FLOAT BUTTON */
-.whatsapp-float {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  z-index: 1000;
-}
-
-.whatsapp-icon {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-/* RESPONSIVE STYLES */
-
-/* Pantallas muy pequeñas (320px y menos) */
-@media (max-width: 320px) {
-  body {
-      padding-top: 2rem;
-      padding-bottom: 2rem;
-  }
-
-  .navbar-brand {
-      font-size: 1rem;
-      text-align: center;
-      display: block;
-  }
-
-  .navbar-toggler {
-      padding: 0.5rem;
-  }
-
-  .navbar-toggler-icon {
-      width: 1.25em;
-      height: 1.25em;
-  }
-
-  .theme-toggle-btn {
-      padding: 0.5rem;
-      margin-right: 0.5rem;
-  }
-
-  .theme-toggle-btn .bi {
-      width: 1.25em;
-      height: 1.25em;
-  }
-
-  .nav-link {
-      font-size: 0.9rem;
-      text-align: center;
-      padding: 0.75rem 1rem;
-      line-height: 1.5;
-  }
-
-  .social-icons {
-      justify-content: center;
-      gap: 15px;
-      margin-top: 0.5rem;
-  }
-
-  .social-icons img {
-      width: 28px;
-      height: 28px;
-  }
-
-  .carousel-item {
-      height: 12rem;
-  }
-
-  .carousel-caption {
-      bottom: 0.2rem;
-      padding: 0.2rem;
-      text-align: center;
-  }
-
-  .carousel-caption.text-start,
-  .carousel-caption.text-end {
-      text-align: center;
-  }
-
-  .carousel-caption h1 {
-      font-size: 1rem;
-      margin: 0 auto;
-      line-height: 1.3;
-  }
-
-  .carousel-caption p {
-      font-size: 0.7rem;
-      margin: 0.2rem auto;
-      line-height: 1.4;
-  }
-
-  .carousel-caption .btn {
-      font-size: 0.7rem;
-      padding: 0.4rem 0.8rem;
-      display: block;
-      margin: 0.3rem auto;
-      min-width: 120px;
-  }
-
-  .marketing .col-lg-4 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 1rem;
-  }
-
-  .marketing .col-lg-4 h2 {
-      font-size: 1rem;
-      margin: 0.5rem 0;
-      line-height: 1.4;
-  }
-
-  .marketing .col-lg-4 p {
-      font-size: 0.8rem;
-      margin: 0.3rem auto;
-      line-height: 1.5;
-  }
-
-  .marketing .col-lg-4 .btn {
-      font-size: 0.8rem;
-      padding: 0.4rem 0.8rem;
-      margin: 0.3rem auto;
-      min-width: 120px;
-  }
-
-  .marketing .rounded-circle {
-      width: 90px;
-      height: 90px;
-      display: block;
-      margin: 0 auto;
-  }
-
-  .featurette-divider {
-      margin: 2rem 0;
-  }
-
-  .featurette {
-      text-align: center;
-  }
-
-  .featurette .row {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .featurette .col-md-7,
-  .featurette .col-md-5 {
-      width: 100%;
-      max-width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 1rem;
-  }
-
-  .featurette .order-md-2,
-  .featurette .order-md-1 {
-      order: 0;
-  }
-
-  .featurette-heading {
-      font-size: 1.2rem;
-      margin: 0 auto;
-      text-align: center;
-      line-height: 1.3;
-  }
-
-  .featurette-heading .text-body-secondary {
-      font-size: 1.2rem;
-  }
-
-  .featurette .lead {
-      font-size: 0.9rem;
-      margin: 0.5rem auto;
-      text-align: center;
-      max-width: 90%;
-      line-height: 1.5;
-  }
-
-  .featurette-image {
-      max-width: 180px;
-      display: block;
-      margin: 0 auto;
-  }
-
-  .whatsapp-float {
-      bottom: 60px;
-      right: 10px;
-  }
-
-  .whatsapp-icon {
-      width: 40px;
-      height: 40px;
-  }
-}
-
-/* Pantallas pequeñas (321px - 576px) */
-@media (min-width: 321px) and (max-width: 576px) {
-  body {
-      padding-top: 2.2rem;
-      padding-bottom: 2.2rem;
-  }
-
-  .navbar-brand {
-      font-size: 1.1rem;
-      text-align: center;
-      display: block;
-  }
-
-  .navbar-toggler {
-      padding: 0.5rem;
-  }
-
-  .navbar-toggler-icon {
-      width: 1.25em;
-      height: 1.25em;
-  }
-
-  .theme-toggle-btn {
-      padding: 0.5rem;
-      margin-right: 0.5rem;
-  }
-
-  .theme-toggle-btn .bi {
-      width: 1.25em;
-      height: 1.25em;
-  }
-
-  .nav-link {
-      font-size: 0.95rem;
-      text-align: center;
-      padding: 0.75rem 1rem;
-      line-height: 1.5;
-  }
-
-  .social-icons {
-      justify-content: center;
-      gap: 15px;
-      margin-top: 0.5rem;
-  }
-
-  .social-icons img {
-      width: 28px;
-      height: 28px;
-  }
-
-  .carousel-item {
-      height: 14rem;
-  }
-
-  .carousel-caption {
-      bottom: 0.3rem;
-      padding: 0.3rem;
-      text-align: center;
-  }
-
-  .carousel-caption.text-start,
-  .carousel-caption.text-end {
-      text-align: center;
-  }
-
-  .carousel-caption h1 {
-      font-size: 1.1rem;
-      margin: 0 auto;
-      line-height: 1.3;
-  }
-
-  .carousel-caption p {
-      font-size: 0.8rem;
-      margin: 0.3rem auto;
-      line-height: 1.4;
-  }
-
-  .carousel-caption .btn {
-      font-size: 0.8rem;
-      padding: 0.5rem 1rem;
-      display: block;
-      margin: 0.3rem auto;
-      min-width: 130px;
-  }
-
-  .marketing .col-lg-4 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 1.2rem;
-  }
-
-  .marketing .col-lg-4 h2 {
-      font-size: 1.1rem;
-      margin: 0.5rem 0;
-      line-height: 1.4;
-  }
-
-  .marketing .col-lg-4 p {
-      font-size: 0.9rem;
-      margin: 0.5rem auto;
-      line-height: 1.5;
-  }
-
-  .marketing .col-lg-4 .btn {
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
-      margin: 0.3rem auto;
-      min-width: 130px;
-  }
-
-  .marketing .rounded-circle {
-      width: 100px;
-      height: 100px;
-      display: block;
-      margin: 0 auto;
-  }
-
-  .featurette-divider {
-      margin: 2.5rem 0;
-  }
-
-  .featurette {
-      text-align: center;
-  }
-
-  .featurette .row {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .featurette .col-md-7,
-  .featurette .col-md-5 {
-      width: 100%;
-      max-width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 1.2rem;
-  }
-
-  .featurette .order-md-2,
-  .featurette .order-md-1 {
-      order: 0;
-  }
-
-  .featurette-heading {
-      font-size: 1.4rem;
-      margin: 0 auto;
-      text-align: center;
-      line-height: 1.3;
-  }
-
-  .featurette-heading .text-body-secondary {
-      font-size: 1.4rem;
-  }
-
-  .featurette .lead {
-      font-size: 1rem;
-      margin: 0.5rem auto;
-      text-align: center;
-      max-width: 90%;
-      line-height: 1.5;
-  }
-
-  .featurette-image {
-      max-width: 200px;
-      display: block;
-      margin: 0 auto;
-  }
-
-  .whatsapp-float {
-      bottom: 60px;
-      right: 15px;
-  }
-
-  .whatsapp-icon {
-      width: 45px;
-      height: 45px;
-  }
-}
-
-/* Pantallas medianas (577px - 767px) */
-@media (min-width: 577px) and (max-width: 767px) {
-  body {
-      padding-top: 2.5rem;
-      padding-bottom: 2.5rem;
-  }
-
-  .navbar-brand {
-      font-size: 1.2rem;
-  }
-
-  .navbar-toggler {
-      padding: 0.5rem;
-  }
-
-  .navbar-toggler-icon {
-      width: 1.25em;
-      height: 1.25em;
-  }
-
-  .theme-toggle-btn {
-      padding: 0.5rem;
-      margin-right: 0.5rem;
-  }
-
-  .theme-toggle-btn .bi {
-      width: 1.25em;
-      height: 1.25em;
-  }
-
-  .nav-link {
-      font-size: 1rem;
-      padding: 0.75rem 1rem;
-  }
-
-  .social-icons {
-      gap: 15px;
-  }
-
-  .social-icons img {
-      width: 28px;
-      height: 28px;
-  }
-
-  .carousel-item {
-      height: 18rem;
-  }
-
-  .carousel-caption {
-      bottom: 0.5rem;
-      padding: 0.5rem;
-      text-align: center;
-  }
-
-  .carousel-caption.text-start,
-  .carousel-caption.text-end {
-      text-align: center;
-  }
-
-  .carousel-caption h1 {
-      font-size: 1.3rem;
-      line-height: 1.3;
-  }
-
-  .carousel-caption p {
-      font-size: 0.9rem;
-      line-height: 1.4;
-  }
-
-  .carousel-caption .btn {
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
-      margin: 0 auto;
-      display: block;
-      min-width: 140px;
-  }
-
-  .marketing .col-lg-4 {
-      margin-bottom: 1.5rem;
-  }
-
-  .marketing .col-lg-4 h2 {
-      font-size: 1.3rem;
-      line-height: 1.4;
-  }
-
-  .marketing .col-lg-4 p {
-      font-size: 1rem;
-      line-height: 1.5;
-  }
-
-  .marketing .col-lg-4 .btn {
-      font-size: 1rem;
-      padding: 0.5rem 1rem;
-      min-width: 140px;
-  }
-
-  .marketing .rounded-circle {
-      width: 110px;
-      height: 110px;
-  }
-
-  .featurette-divider {
-      margin: 3rem 0;
-  }
-
-  .featurette {
-      text-align: center;
-  }
-
-  .featurette .row {
-      flex-direction: column;
-      align-items: center;
-  }
-
-  .featurette .col-md-7,
-  .featurette .col-md-5 {
-      width: 100%;
-      max-width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 1.5rem;
-  }
-
-  .featurette-heading {
-      font-size: 1.8rem;
-      line-height: 1.3;
-  }
-
-  .featurette-heading .text-body-secondary {
-      font-size: 1.8rem;
-  }
-
-  .featurette .lead {
-      font-size: 1.1rem;
-      max-width: 90%;
-      line-height: 1.5;
-  }
-
-  .featurette-image {
-      max-width: 250px;
-  }
-}
-
-/* Pantallas tabletas (768px - 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-  .carousel-item {
-      height: 24rem;
-  }
-
-  .carousel-caption {
-      bottom: 1.5rem;
-      text-align: center;
-  }
-
-  .carousel-caption.text-start,
-  .carousel-caption.text-end {
-      text-align: center;
-  }
-
-  .carousel-caption h1 {
-      font-size: 1.75rem;
-  }
-
-  .carousel-caption p {
-      font-size: 1rem;
-      max-width: 80%;
-  }
-
-  .carousel-caption .btn {
-      font-size: 0.9rem;
-      padding: 0.5rem 1rem;
-  }
-
-  .marketing .col-lg-4 h2 {
-      font-size: 1.4rem;
-  }
-
-  .marketing .col-lg-4 p {
-      font-size: 0.95rem;
-      max-width: 80%;
-  }
-
-  .marketing .rounded-circle {
-      width: 130px;
-      height: 130px;
-  }
-
-  .featurette {
-      text-align: center;
-  }
-
-  .featurette .row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-  }
-
-  .featurette .col-md-7 {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin-bottom: 2rem;
-  }
-
-  .featurette .col-md-5 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-  }
-
-  .featurette-heading {
-      font-size: 2.25rem;
-  }
-
-  .featurette-heading .text-body-secondary {
-      font-size: 2.25rem;
-  }
-
-  .featurette .lead {
-      font-size: 1.15rem;
-      max-width: 80%;
-  }
-
-  .featurette-image {
-      max-width: 400px;
-  }
-}
-
-/* Pantallas grandes (1025px - 1200px) */
-@media (min-width: 1025px) and (max-width: 1200px) {
-  .carousel-item {
-      height: 28rem;
-  }
-
-  .carousel-caption {
-      bottom: 2rem;
-  }
-
-  .carousel-caption h1 {
-      font-size: 2rem;
-  }
-
-  .carousel-caption p {
-      font-size: 1.1rem;
-  }
-
-  .carousel-caption .btn {
-      font-size: 1rem;
-      padding: 0.6rem 1.2rem;
-  }
-
-  .marketing .col-lg-4 h2 {
-      font-size: 1.5rem;
-  }
-
-  .marketing .col-lg-4 p {
-      font-size: 1rem;
-  }
-
-  .featurette-heading {
-      font-size: 2.5rem;
-  }
-
-  .featurette-heading .text-body-secondary {
-      font-size: 2.5rem;
-  }
-
-  .featurette .lead {
-      font-size: 1.25rem;
-  }
-
-  .featurette-image {
-      max-width: 450px;
-  }
-}
-
-/* Pantallas muy grandes (1201px - 1400px) */
-@media (min-width: 1201px) and (max-width: 1400px) {
-  .carousel-item {
-      height: 32rem;
-  }
-
-  .carousel-caption {
-      bottom: 3rem;
-  }
-
-  .carousel-caption h1 {
-      font-size: 2.5rem;
-  }
-
-  .carousel-caption p {
-      font-size: 1.25rem;
-      line-height: 1.4;
-  }
-
-  .carousel-caption .btn {
-      font-size: 1.1rem;
-      padding: 0.7rem 1.4rem;
-  }
-
-  .marketing .col-lg-4 h2 {
-      font-size: 1.6rem;
-  }
-
-  .marketing .col-lg-4 p {
-      font-size: 1.1rem;
-  }
-
-  .featurette-heading {
-      font-size: 3rem;
-      margin-top: 7rem;
-  }
-
-  .featurette-heading .text-body-secondary {
-      font-size: 3rem;
-  }
-
-  .featurette .lead {
-      font-size: 1.5rem;
-  }
-
-  .featurette-image {
-      max-width: 500px;
-  }
-}
-
-/* Pantallas ultra grandes (1401px y más) */
-@media (min-width: 1401px) {
-  .carousel-item {
-      height: 36rem;
-  }
-
-  .carousel-caption {
-      bottom: 4rem;
-  }
-
-  .carousel-caption h1 {
-      font-size: 3rem;
-  }
-
-  .carousel-caption p {
-      font-size: 1.5rem;
-      line-height: 1.4;
-  }
-
-  .carousel-caption .btn {
-      font-size: 1.2rem;
-      padding: 0.8rem 1.6rem;
-  }
-
-  .marketing .col-lg-4 h2 {
-      font-size: 1.8rem;
-  }
-
-  .marketing .col-lg-4 p {
-      font-size: 1.2rem;
-  }
-
-  .marketing .rounded-circle {
-      width: 160px;
-      height: 160px;
-  }
-
-  .featurette-heading {
-      font-size: 3.5rem;
-      margin-top: 8rem;
-  }
-
-  .featurette-heading .text-body-secondary {
-      font-size: 3.5rem;
-  }
-
-  .featurette .lead {
-      font-size: 1.75rem;
-  }
-
-  .featurette-image {
-      max-width: 600px;
-  }
-}
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="auto">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Dietética Horqueta - Productos naturales y orgánicos">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.145.0">
+    <title>Dietética Horqueta · Bootstrap v5.3</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+
+    <!-- Bootstrap CSS desde CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
+    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
+    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
+    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
+    <meta name="theme-color" content="#712cf9">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
+        }
+
+        .theme-toggle-btn {
+            background: none;
+            border: none;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+            color: #FFFFFF;
+        }
+
+        .theme-toggle-btn .bi {
+            width: 1.5em;
+            height: 1.5em;
+        }
+    </style>
+
+    <!-- Custom styles -->
+    <link href="carousel.css" rel="stylesheet">
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+        <symbol id="moon-stars-fill" viewBox="0 0 16 16">
+            <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+            <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+        </symbol>
+        <symbol id="sun-fill" viewBox="0 0 16 16">
+            <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 0 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </symbol>
+    </svg>
+
+    <header>
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Dietética Horqueta</a>
+                <button class="theme-toggle-btn d-md-none" type="button" id="theme-toggle-mobile" aria-label="Toggle theme">
+                    <svg class="bi theme-icon"><use href="#sun-fill"></use></svg>
+                </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://docs.google.com/spreadsheets/d/1eWL9KOO_OkIcV6d1KvCv7Jnkbhq9SaDv_WfEi2ZdX2E/edit?gid=0#gid=0">Precios Condimentos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="https://docs.google.com/spreadsheets/d/1bsnIHN3VJ9poi8_6Yr-jXbLJOWqj6LDS-9tJPpGyFMg/edit?usp=sharing">Precios Frutos Secos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#promociones">Promociones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#dudas-frecuentes">Dudas Frecuentes</a>
+                        </li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="https://wa.me/+542477300676" target="_blank"><img src="img/Whatsapp.png" alt="WhatsApp"></a>
+                        <a href="https://www.instagram.com/horqueta.nat/" target="_blank"><img src="img/Instagram.png" alt="Instagram"></a>
+                        <a href="https://www.facebook.com/profile.php?id=100092742533951" target="_blank"><img src="img/Facebook.png" alt="Facebook"></a>
+                    </div>
+                    <button class="theme-toggle-btn d-none d-md-block ms-3" type="button" id="theme-toggle" aria-label="Toggle theme">
+                        <svg class="bi theme-icon"><use href="#sun-fill"></use></svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="especias.jpeg" class="d-block w-100" alt="Slide 1">
+                    <div class="container">
+                        <div class="carousel-caption text-start">
+                            <h1>Somos Energía</h1>
+                            <p class="opacity-75">Mix de frutos, frutas secas y desecadas.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#productos">Explorar Productos</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="especias2.jpeg" class="d-block w-100" alt="Slide 2">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Condimentos Naturales</h1>
+                            <p>Añade sabor y vida a tus platos con nuestros condimentos 100% naturales.</p>
+                            <p><a class="btn btn-lg btn-primary" href="https://docs.google.com/spreadsheets/d/1eWL9KOO_OkIcV6d1KvCv7Jnkbhq9SaDv_WfEi2ZdX2E/edit?gid=0#gid=0">Ver Precios</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="especias.jpeg" class="d-block w-100" alt="Slide 3">
+                    <div class="container">
+                        <div class="carousel-caption text-end">
+                            <h1>Promociones Especiales</h1>
+                            <p>Aprovecha descuentos en frutos secos y condimentos seleccionados.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#promociones">Ver Promociones</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <div class="container marketing">
+            <div class="row">
+                <div class="col-lg-4">
+                    <img src="especias.jpeg" class="rounded-circle" alt="Frutos Secos" loading="lazy">
+                    <h2 class="fw-normal">Frutos Secos</h2>
+                    <p>Disfruta de la mejor selección de frutos secos, cargados de energía y vitalidad para tu día a día.</p>
+                    <p><a class="btn btn-secondary" href="https://docs.google.com/spreadsheets/d/1bsnIHN3VJ9poi8_6Yr-jXbLJOWqj6LDS-9tJPpGyFMg/edit?usp=sharing">Ver Precios »</a></p>
+                </div>
+                <div class="col-lg-4">
+                    <img src="especias.jpeg" class="rounded-circle" alt="Condimentos" loading="lazy">
+                    <h2 class="fw-normal">Condimentos</h2>
+                    <p>Añade sabor y vida a tus platos con nuestros condimentos 100% naturales.</p>
+                    <p><a class="btn btn-secondary" href="https://docs.google.com/spreadsheets/d/1eWL9KOO_OkIcV6d1KvCv7Jnkbhq9SaDv_WfEi2ZdX2E/edit?gid=0#gid=0">Ver Precios »</a></p>
+                </div>
+                <div class="col-lg-4">
+                    <img src="especias.jpeg" class="rounded-circle" alt="Orgánicos" loading="lazy">
+                    <h2 class="fw-normal">Orgánicos</h2>
+                    <p>Nuestros productos orgánicos están libres de pesticidas y conservantes.</p>
+                    <p><a class="btn btn-secondary" href="#">Ver Productos »</a></p>
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Frutos Secos de Calidad <span class="text-body-secondary">Energía Natural.</span></h2>
+                    <p class="lead">Disfruta de almendras, nueces, avellanas y mixes, perfectos para un snack saludable.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="especias.jpeg" class="featurette-image img-fluid mx-auto" alt="Frutos Secos" loading="lazy">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7 order-md-2">
+                    <h2 class="featurette-heading fw-normal lh-1">Condimentos 100% Naturales <span class="text-body-secondary">Sabor Auténtico.</span></h2>
+                    <p class="lead">Potencia tus recetas con nuestras especias: cúrcuma, pimienta, pimentón y más.</p>
+                </div>
+                <div class="col-md-5 order-md-1">
+                    <img src="especias.jpeg" class="featurette-image img-fluid mx-auto" alt="Condimentos" loading="lazy">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+
+            <div class="row featurette">
+                <div class="col-md-7">
+                    <h2 class="featurette-heading fw-normal lh-1">Productos Orgánicos <span class="text-body-secondary">Puros y Sostenibles.</span></h2>
+                    <p class="lead">Aceites, polen de abeja y más, libres de químicos para un estilo de vida saludable.</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="especias.jpeg" class="featurette-image img-fluid mx-auto" alt="Productos Orgánicos" loading="lazy">
+                </div>
+            </div>
+
+            <hr class="featurette-divider">
+        </div>
+
+        <footer class="container">
+            <p class="float-end"><a href="#">Volver arriba</a></p>
+            <p>© 2024 Dietética Horqueta · <a href="#">Privacidad</a> · <a href="#">Términos</a></p>
+        </footer>
+    </main>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a href="https://wa.me/+542477300676" class="whatsapp-float" target="_blank">
+        <img src="img/Whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+    </a>
+
+    <!-- Bootstrap JS desde CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+    <!-- Script para el toggle de tema -->
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleMobile = document.getElementById('theme-toggle-mobile');
+        const html = document.documentElement;
+
+        function updateThemeIcon() {
+            const themeIcon = document.querySelectorAll('.theme-icon');
+            if (html.getAttribute('data-bs-theme') === 'dark') {
+                themeIcon.forEach(icon => icon.setAttribute('href', '#moon-stars-fill'));
+            } else {
+                themeIcon.forEach(icon => icon.setAttribute('href', '#sun-fill'));
+            }
+        }
+
+        function toggleTheme() {
+            if (html.getAttribute('data-bs-theme') === 'dark') {
+                html.setAttribute('data-bs-theme', 'light');
+            } else {
+                html.setAttribute('data-bs-theme', 'dark');
+            }
+            updateThemeIcon();
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        themeToggleMobile.addEventListener('click', toggleTheme);
+
+        // Detectar el tema inicial según la preferencia del sistema
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            html.setAttribute('data-bs-theme', 'dark');
+        } else {
+            html.setAttribute('data-bs-theme', 'light');
+        }
+        updateThemeIcon();
+    </script>
+</body>
+</html>
