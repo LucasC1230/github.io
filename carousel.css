@@ -142,8 +142,8 @@ html[data-bs-theme="dark"] .carousel-caption {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between; /* Distribuir el espacio verticalmente */
-  min-height: 350px; /* Altura mínima para consistencia */
+  justify-content: space-between;
+  min-height: 350px; /* Altura base */
 }
 
 .marketing .col-lg-4 h2 {
@@ -156,14 +156,23 @@ html[data-bs-theme="dark"] .carousel-caption {
   margin: 0.5rem auto;
   font-size: 1rem;
   max-width: 90%;
-  flex-grow: 1; /* Hacer que el párrafo crezca para ocupar el espacio disponible */
+  flex-grow: 1;
   display: flex;
-  align-items: center; /* Centrar el texto verticalmente dentro del párrafo */
+  align-items: center;
   justify-content: center;
 }
 
 .marketing .col-lg-4 .btn {
-  margin-top: auto; /* Empujar el botón hacia la parte inferior */
+  margin-top: auto;
+}
+
+.marketing .rounded-circle {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Ajustes responsivos */
@@ -171,7 +180,37 @@ html[data-bs-theme="dark"] .carousel-caption {
 /* Pantallas muy pequeñas (320px y menos) */
 @media (max-width: 320px) {
   .marketing .col-lg-4 {
-      min-height: 300px; /* Reducir la altura mínima en pantallas pequeñas */
+      min-height: 280px; /* Reducido para pantallas pequeñas */
+  }
+
+  .marketing .col-lg-4 h2 {
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+      line-height: 1.4;
+  }
+
+  .marketing .col-lg-4 p {
+      font-size: 0.75rem;
+      margin: 0.3rem auto;
+      line-height: 1.5;
+  }
+
+  .marketing .col-lg-4 .btn {
+      font-size: 0.75rem;
+      padding: 0.4rem 0.8rem;
+      min-width: 110px;
+  }
+
+  .marketing .rounded-circle {
+      width: 80px;
+      height: 80px;
+  }
+}
+
+/* Pantallas pequeñas (321px - 576px) */
+@media (min-width: 321px) and (max-width: 576px) {
+  .marketing .col-lg-4 {
+      min-height: 300px;
   }
 
   .marketing .col-lg-4 h2 {
@@ -181,40 +220,36 @@ html[data-bs-theme="dark"] .carousel-caption {
   }
 
   .marketing .col-lg-4 p {
-      font-size: 0.8rem;
-      margin: 0.3rem auto;
+      font-size: 0.85rem;
+      margin: 0.5rem auto;
       line-height: 1.5;
   }
 
   .marketing .col-lg-4 .btn {
-      font-size: 0.8rem;
-      padding: 0.4rem 0.8rem;
+      font-size: 0.85rem;
+      padding: 0.5rem 1rem;
       min-width: 120px;
   }
 
   .marketing .rounded-circle {
       width: 90px;
       height: 90px;
-      display: block;
-      margin: 0 auto;
   }
 }
 
-/* Pantallas pequeñas (321px - 576px) */
-@media (min-width: 321px) and (max-width: 576px) {
+/* Pantallas medianas (577px - 767px) */
+@media (min-width: 577px) and (max-width: 767px) {
   .marketing .col-lg-4 {
       min-height: 320px;
   }
 
   .marketing .col-lg-4 h2 {
-      font-size: 1.1rem;
-      margin: 0.5rem 0;
+      font-size: 1.2rem;
       line-height: 1.4;
   }
 
   .marketing .col-lg-4 p {
       font-size: 0.9rem;
-      margin: 0.5rem auto;
       line-height: 1.5;
   }
 
@@ -227,31 +262,27 @@ html[data-bs-theme="dark"] .carousel-caption {
   .marketing .rounded-circle {
       width: 100px;
       height: 100px;
-      display: block;
-      margin: 0 auto;
   }
 }
 
-/* Pantallas medianas (577px - 767px) */
-@media (min-width: 577px) and (max-width: 767px) {
+/* Pantallas tabletas (768px - 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
   .marketing .col-lg-4 {
       min-height: 340px;
   }
 
   .marketing .col-lg-4 h2 {
       font-size: 1.3rem;
-      line-height: 1.4;
   }
 
   .marketing .col-lg-4 p {
-      font-size: 1rem;
-      line-height: 1.5;
+      font-size: 0.9rem;
+      max-width: 80%;
   }
 
   .marketing .col-lg-4 .btn {
-      font-size: 1rem;
+      font-size: 0.9rem;
       padding: 0.5rem 1rem;
-      min-width: 140px;
   }
 
   .marketing .rounded-circle {
@@ -260,8 +291,8 @@ html[data-bs-theme="dark"] .carousel-caption {
   }
 }
 
-/* Pantallas tabletas (768px - 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
+/* Pantallas grandes (1025px - 1200px) */
+@media (min-width: 1025px) and (max-width: 1200px) {
   .marketing .col-lg-4 {
       min-height: 360px;
   }
@@ -272,20 +303,68 @@ html[data-bs-theme="dark"] .carousel-caption {
 
   .marketing .col-lg-4 p {
       font-size: 0.95rem;
-      max-width: 80%;
   }
 
   .marketing .col-lg-4 .btn {
-      font-size: 0.95rem;
-      padding: 1rem 1rem;
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
   }
 
   .marketing .rounded-circle {
-      width: 130px;
-      height: 130px;
+      width: 120px;
+      height: 120px;
   }
 }
 
+/* Pantallas muy grandes (1201px - 1400px) - Incluye 1366x768 */
+@media (min-width: 1201px) and (max-width: 1400px) {
+  .marketing .col-lg-4 {
+      min-height: 340px; /* Reducido de 400px para que la sección no sea tan alta */
+  }
+
+  .marketing .col-lg-4 h2 {
+      font-size: 1.3rem; /* Reducido de 1.6rem */
+  }
+
+  .marketing .col-lg-4 p {
+      font-size: 0.95rem; /* Reducido de 1.1rem */
+  }
+
+  .marketing .col-lg-4 .btn {
+      font-size: 0.95rem; /* Reducido de 1.1rem */
+      padding: 0.4rem 0.8rem; /* Padding ajustado para proporción */
+  }
+
+  .marketing .rounded-circle {
+      width: 110px; /* Reducido de 120px para mejor proporción */
+      height: 110px;
+  }
+}
+
+/* Pantallas ultra grandes (1401px y más) */
+@media (min-width: 1401px) {
+  .marketing .col-lg-4 {
+      min-height: 420px;
+  }
+
+  .marketing .col-lg-4 h2 {
+      font-size: 1.8rem;
+  }
+
+  .marketing .col-lg-4 p {
+      font-size: 1.2rem;
+  }
+
+  .marketing .col-lg-4 .btn {
+      font-size: 1.2rem;
+      padding: 0.5rem 1rem;
+  }
+
+  .marketing .rounded-circle {
+      width: 160px;
+      height: 160px;
+  }
+}
 
 
 /* Pantallas grandes (1025px - 1200px) */
