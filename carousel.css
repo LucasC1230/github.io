@@ -185,7 +185,7 @@ html[data-bs-theme="dark"] .navbar {
     transform: translateY(20px) scale(0.95);
 }
 
-html[data-bs-theme="dark"] .carousel-caption { /* Corregido el error tipográfico */
+html[data-bs-theme="dark"] .carousel-caption {
     color: #FFFFFF;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
@@ -229,13 +229,14 @@ html[data-bs-theme="dark"] .carousel-caption { /* Corregido el error tipográfic
 .carousel-control-prev,
 .carousel-control-next {
     width: 10%;
-    background: none; /* Sin fondo negro */
-    transition: opacity 0.3s ease;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    transition: background 0.3s ease;
 }
 
 .carousel-control-prev:hover,
 .carousel-control-next:hover {
-    opacity: 0.8;
+    background: rgba(0, 0, 0, 0.5);
 }
 
 .carousel-control-prev-icon,
@@ -290,27 +291,19 @@ html[data-bs-theme="dark"] .carousel-play-pause-btn:focus {
 }
 
 /* MARKETING CONTENT */
-.marketing .row {
-    display: flex;
-    justify-content: space-between;
-    gap: 2rem;
-}
-
 .marketing .col-lg-4 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
     min-height: 350px;
-    padding: 2rem;
+    padding: 1.5rem;
     background-color: var(--bs-body-bg-light);
     border-radius: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    flex: 1;
-    max-width: calc(33.333% - 1.5rem);
 }
 
 html[data-bs-theme="dark"] .marketing .col-lg-4 {
@@ -363,35 +356,6 @@ html[data-bs-theme="dark"] .marketing .col-lg-4 {
     margin: 3rem 0;
 }
 
-.featurette {
-    padding: 2rem 0; /* Espaciado general para cada featurette */
-}
-
-/* Por defecto, en pantallas pequeñas, los featurettes se apilan */
-.featurette .row {
-    display: flex;
-    flex-direction: column; /* Apilado por defecto */
-    align-items: center; /* Centrado en pantallas pequeñas */
-    justify-content: center;
-    width: 100%;
-}
-
-.featurette .col-md-7,
-.featurette .col-md-5 {
-    width: 100%; /* Ocupan todo el ancho en pantallas pequeñas */
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrado en pantallas pequeñas */
-    padding: 1rem;
-    text-align: center; /* Texto centrado por defecto */
-}
-
-.featurette .order-md-2,
-.featurette .order-md-1 {
-    order: 0; /* Reseteamos el orden en pantallas pequeñas */
-}
-
 .featurette-heading {
     letter-spacing: -0.03rem;
     color: var(--navbar-bg-light);
@@ -407,219 +371,6 @@ html[data-bs-theme="dark"] .marketing .col-lg-4 {
 
 .featurette .lead {
     font-size: 1.25rem;
-}
-
-html[data-bs-theme="dark"] .featurette-heading {
-    color: var(--navbar-bg-dark);
-}
-
-html[data-bs-theme="dark"] .featurette-heading .text-body-secondary {
-    color: var(--link-hover-dark);
-}
-
-.featurette-image {
-    width: 100%;
-    height: auto;
-    max-width: 500px;
-    object-fit: cover;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border-radius: 15px; /* Añadido para un mejor diseño */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Añadido para profundidad */
-}
-
-/* Pantallas tabletas y mayores (768px y más) */
-@media (min-width: 768px) {
-    .featurette .row {
-        flex-direction: row; /* Texto e imagen lado a lado */
-        align-items: center; /* Alineamos verticalmente */
-        justify-content: space-between; /* Espacio entre texto e imagen */
-    }
-
-    .featurette .col-md-7,
-    .featurette .col-md-5 {
-        width: auto; /* Dejamos que Bootstrap maneje el ancho */
-        max-width: none;
-        align-items: flex-start; /* Alineamos el contenido a la izquierda */
-        text-align: left; /* Texto alineado a la izquierda */
-    }
-
-    .featurette .col-md-7 {
-        padding-right: 2rem; /* Espacio entre texto e imagen */
-    }
-
-    .featurette .col-md-5 {
-        padding-left: 2rem;
-    }
-
-    .featurette-heading {
-        text-align: left; /* Aseguramos que el texto esté alineado a la izquierda */
-    }
-
-    .featurette .lead {
-        text-align: left;
-    }
-}
-
-/* Ajustes específicos para pantallas muy pequeñas (320px y menos) */
-@media (max-width: 320px) {
-    .featurette-divider {
-        margin: 2rem 0;
-    }
-
-    .featurette-heading {
-        font-size: 1.2rem;
-        margin: 0 auto;
-        line-height: 1.3;
-    }
-
-    .featurette-heading .text-body-secondary {
-        font-size: 1.2rem;
-    }
-
-    .featurette .lead {
-        font-size: 0.9rem;
-        margin: 0.5rem auto;
-        max-width: 90%;
-        line-height: 1.5;
-    }
-
-    .featurette-image {
-        max-width: 180px;
-    }
-}
-
-/* Pantallas pequeñas (321px - 576px) */
-@media (min-width: 321px) and (max-width: 576px) {
-    .featurette-divider {
-        margin: 2.5rem 0;
-    }
-
-    .featurette-heading {
-        font-size: 1.4rem;
-        margin: 0 auto;
-        line-height: 1.3;
-    }
-
-    .featurette-heading .text-body-secondary {
-        font-size: 1.4rem;
-    }
-
-    .featurette .lead {
-        font-size: 1rem;
-        margin: 0.5rem auto;
-        max-width: 90%;
-        line-height: 1.5;
-    }
-
-    .featurette-image {
-        max-width: 200px;
-    }
-}
-
-/* Pantallas medianas (577px - 767px) */
-@media (min-width: 577px) and (max-width: 767px) {
-    .featurette-divider {
-        margin: 3rem 0;
-    }
-
-    .featurette-heading {
-        font-size: 1.8rem;
-        line-height: 1.3;
-    }
-
-    .featurette-heading .text-body-secondary {
-        font-size: 1.8rem;
-    }
-
-    .featurette .lead {
-        font-size: 1.1rem;
-        max-width: 90%;
-        line-height: 1.5;
-    }
-
-    .featurette-image {
-        max-width: 250px;
-    }
-}
-
-/* Pantallas tabletas (768px - 1024px) */
-@media (min-width: 768px) and (max-width: 1024px) {
-    .featurette-heading {
-        font-size: 2.25rem;
-    }
-
-    .featurette-heading .text-body-secondary {
-        font-size: 2.25rem;
-    }
-
-    .featurette .lead {
-        font-size: 1.15rem;
-    }
-
-    .featurette-image {
-        max-width: 400px;
-    }
-}
-
-/* Pantallas grandes (1025px - 1200px) */
-@media (min-width: 1025px) and (max-width: 1200px) {
-    .featurette-heading {
-        font-size: 2.5rem;
-    }
-
-    .featurette-heading .text-body-secondary {
-        font-size: 2.5rem;
-    }
-
-    .featurette .lead {
-        font-size: 1.25rem;
-    }
-
-    .featurette-image {
-        max-width: 450px;
-    }
-}
-
-/* Pantallas muy grandes (1201px - 1400px) */
-@media (min-width: 1201px) and (max-width: 1400px) {
-    .featurette-heading {
-        font-size: 3rem;
-        margin-top: 7rem;
-    }
-
-    .featurette-heading .text-body-secondary {
-        font-size: 3rem;
-    }
-
-    .featurette .lead {
-        font-size: 1.5rem;
-    }
-
-    .featurette-image {
-        max-width: 500px;
-    }
-}
-
-/* Pantallas ultra grandes (1401px y más) */
-@media (min-width: 1401px) {
-    .featurette-heading {
-        font-size: 3.5rem;
-        margin-top: 8rem;
-    }
-
-    .featurette-heading .text-body-secondary {
-        font-size: 3.5rem;
-    }
-
-    .featurette .lead {
-        font-size: 1.75rem;
-    }
-
-    .featurette-image {
-        max-width: 600px;
-    }
 }
 
 html[data-bs-theme="dark"] .featurette-heading {
@@ -799,8 +550,7 @@ html[data-bs-theme="dark"] .bi {
     }
 
     .theme-toggle-btn {
-        width: 30px;
-        height: 30px;
+        padding: 0.5rem;
         margin-right: 0.5rem;
     }
 
@@ -879,18 +629,12 @@ html[data-bs-theme="dark"] .bi {
         height: 20px;
     }
 
-    .marketing .row {
-        gap: 1rem;
-    }
-
     .marketing .col-lg-4 {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 1rem;
         min-height: 260px;
-        padding: 1rem;
-        max-width: 100%;
     }
 
     .marketing .col-lg-4 h2 {
@@ -921,11 +665,11 @@ html[data-bs-theme="dark"] .bi {
     }
 
     .featurette {
-        text-align: center; /* Centramos el contenido en pantallas pequeñas */
+        text-align: center;
     }
 
     .featurette .row {
-        flex-direction: column; /* Apilamos texto e imagen */
+        flex-direction: column;
         align-items: center;
     }
 
@@ -941,7 +685,7 @@ html[data-bs-theme="dark"] .bi {
 
     .featurette .order-md-2,
     .featurette .order-md-1 {
-        order: 0; /* Reseteamos el orden en pantallas pequeñas */
+        order: 0;
     }
 
     .featurette-heading {
@@ -1013,8 +757,7 @@ html[data-bs-theme="dark"] .bi {
     }
 
     .theme-toggle-btn {
-        width: 30px;
-        height: 30px;
+        padding: 0.5rem;
         margin-right: 0.5rem;
     }
 
@@ -1093,18 +836,12 @@ html[data-bs-theme="dark"] .bi {
         height: 25px;
     }
 
-    .marketing .row {
-        gap: 1.5rem;
-    }
-
     .marketing .col-lg-4 {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin-bottom: 1.2rem;
         min-height: 280px;
-        padding: 1.5rem;
-        max-width: 100%;
     }
 
     .marketing .col-lg-4 h2 {
@@ -1221,8 +958,7 @@ html[data-bs-theme="dark"] .bi {
     }
 
     .theme-toggle-btn {
-        width: 35px;
-        height: 35px;
+        padding: 0.5rem;
         margin-right: 0.5rem;
     }
 
@@ -1273,15 +1009,9 @@ html[data-bs-theme="dark"] .bi {
         min-width: 140px;
     }
 
-    .marketing .row {
-        gap: 1.5rem;
-    }
-
     .marketing .col-lg-4 {
         margin-bottom: 1.5rem;
         min-height: 300px;
-        padding: 1.5rem;
-        max-width: 100%;
     }
 
     .marketing .col-lg-4 h2 {
@@ -1328,11 +1058,6 @@ html[data-bs-theme="dark"] .bi {
         margin-bottom: 1.5rem;
     }
 
-    .featurette .order-md-2,
-    .featurette .order-md-1 {
-        order: 0;
-    }
-
     .featurette-heading {
         font-size: 1.8rem;
         line-height: 1.3;
@@ -1361,6 +1086,12 @@ html[data-bs-theme="dark"] .bi {
 
     .carousel-caption {
         bottom: 1.5rem;
+        text-align: center;
+    }
+
+    .carousel-caption.text-start,
+    .carousel-caption.text-end {
+        text-align: center;
     }
 
     .carousel-caption h1 {
@@ -1377,14 +1108,8 @@ html[data-bs-theme="dark"] .bi {
         padding: 0.5rem 1rem;
     }
 
-    .marketing .row {
-        gap: 2rem;
-    }
-
     .marketing .col-lg-4 {
         min-height: 320px;
-        padding: 1.5rem;
-        max-width: calc(33.333% - 1.5rem);
     }
 
     .marketing .col-lg-4 h2 {
@@ -1407,21 +1132,22 @@ html[data-bs-theme="dark"] .bi {
     }
 
     .featurette {
-        text-align: left; /* Restauramos alineación a la izquierda para pantallas grandes */
+        text-align: center;
     }
 
     .featurette .row {
-        flex-direction: row; /* Texto e imagen lado a lado */
+        display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
     }
 
     .featurette .col-md-7 {
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
-        text-align: left;
-        margin-bottom: 0;
+        text-align: center;
+        margin-bottom: 2rem;
     }
 
     .featurette .col-md-5 {
@@ -1432,7 +1158,6 @@ html[data-bs-theme="dark"] .bi {
 
     .featurette-heading {
         font-size: 2.25rem;
-        text-align: left;
     }
 
     .featurette-heading .text-body-secondary {
@@ -1441,8 +1166,7 @@ html[data-bs-theme="dark"] .bi {
 
     .featurette .lead {
         font-size: 1.15rem;
-        max-width: 100%;
-        text-align: left;
+        max-width: 80%;
     }
 
     .featurette-image {
@@ -1473,14 +1197,8 @@ html[data-bs-theme="dark"] .bi {
         padding: 0.6rem 1.2rem;
     }
 
-    .marketing .row {
-        gap: 2rem;
-    }
-
     .marketing .col-lg-4 {
         min-height: 380px;
-        padding: 1.5rem;
-        max-width: calc(33.333% - 1.5rem);
     }
 
     .marketing .col-lg-4 h2 {
@@ -1501,24 +1219,8 @@ html[data-bs-theme="dark"] .bi {
         height: 110px;
     }
 
-    .featurette {
-        text-align: left;
-    }
-
-    .featurette .row {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .featurette .col-md-7 {
-        text-align: left;
-        margin-bottom: 0;
-    }
-
     .featurette-heading {
         font-size: 2.5rem;
-        text-align: left;
     }
 
     .featurette-heading .text-body-secondary {
@@ -1527,7 +1229,6 @@ html[data-bs-theme="dark"] .bi {
 
     .featurette .lead {
         font-size: 1.25rem;
-        text-align: left;
     }
 
     .featurette-image {
@@ -1559,14 +1260,8 @@ html[data-bs-theme="dark"] .bi {
         padding: 0.7rem 1.4rem;
     }
 
-    .marketing .row {
-        gap: 2rem;
-    }
-
     .marketing .col-lg-4 {
         min-height: 320px;
-        padding: 1.5rem;
-        max-width: calc(33.333% - 1.5rem);
     }
 
     .marketing .col-lg-4 h2 {
@@ -1587,25 +1282,9 @@ html[data-bs-theme="dark"] .bi {
         height: 90px;
     }
 
-    .featurette {
-        text-align: left;
-    }
-
-    .featurette .row {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .featurette .col-md-7 {
-        text-align: left;
-        margin-bottom: 0;
-    }
-
     .featurette-heading {
         font-size: 3rem;
         margin-top: 7rem;
-        text-align: left;
     }
 
     .featurette-heading .text-body-secondary {
@@ -1614,7 +1293,6 @@ html[data-bs-theme="dark"] .bi {
 
     .featurette .lead {
         font-size: 1.5rem;
-        text-align: left;
     }
 
     .featurette-image {
@@ -1646,14 +1324,8 @@ html[data-bs-theme="dark"] .bi {
         padding: 0.8rem 1.6rem;
     }
 
-    .marketing .row {
-        gap: 2.5rem;
-    }
-
     .marketing .col-lg-4 {
         min-height: 400px;
-        padding: 2rem;
-        max-width: calc(33.333% - 2rem);
     }
 
     .marketing .col-lg-4 h2 {
@@ -1674,25 +1346,9 @@ html[data-bs-theme="dark"] .bi {
         height: 140px;
     }
 
-    .featurette {
-        text-align: left;
-    }
-
-    .featurette .row {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .featurette .col-md-7 {
-        text-align: left;
-        margin-bottom: 0;
-    }
-
     .featurette-heading {
         font-size: 3.5rem;
         margin-top: 8rem;
-        text-align: left;
     }
 
     .featurette-heading .text-body-secondary {
@@ -1701,7 +1357,6 @@ html[data-bs-theme="dark"] .bi {
 
     .featurette .lead {
         font-size: 1.75rem;
-        text-align: left;
     }
 
     .featurette-image {
