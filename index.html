@@ -1,26 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="auto">
+<html lang="es" data-bs-theme="auto">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Dietética Horqueta - Productos naturales y orgánicos">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.145.0">
+    <meta name="robots" content="index, follow">
+    <!-- Open Graph y Twitter Cards para SEO -->
+    <meta property="og:title" content="Dietética Horqueta - Productos naturales y orgánicos">
+    <meta property="og:description" content="Explora nuestra selección de frutos secos, condimentos y productos orgánicos en Dietética Horqueta.">
+    <meta property="og:image" content="https://tu-sitio.com/img/Logo Horqueta.png">
+    <meta property="og:url" content="https://tu-sitio.com">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Dietética Horqueta · Productos Naturales</title>
+
     <link rel="icon" href="img/Logo Horqueta.png" type="image/png">
-    <title>Dietética Horqueta · Bootstrap v5.3</title>
+    <link rel="apple-touch-icon" href="img/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="manifest.json">
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
+    <!-- Preload de recursos críticos -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="carousel.css" as="style">
 
-    <!-- Bootstrap CSS desde CDN -->
+    <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
 
-    <link rel="apple-touch-icon" href="/docs/5.3/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
-    <link rel="manifest" href="/docs/5.3/assets/img/favicons/manifest.json">
-    <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
-    <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico">
-    <meta name="theme-color" content="#712cf9">
+    <!-- Font Awesome solo para íconos necesarios -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
         .bd-placeholder-img {
@@ -52,9 +59,10 @@
         }
 
         .theme-toggle-btn {
-            background: none;
+            background: rgba(255, 255, 255, 0.1);
             border: none;
-            padding: 0.5rem;
+            border-radius: 50%;
+            padding: 0.4rem;
             display: flex;
             align-items: center;
             color: #FFFFFF;
@@ -63,6 +71,24 @@
         .theme-toggle-btn .bi {
             width: 1.5em;
             height: 1.5em;
+        }
+
+        .fa {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            padding: 8px;
+            font-size: 20px;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+        }
+
+        .fa:hover {
+            opacity: 0.7;
         }
     </style>
 
@@ -84,7 +110,7 @@
         <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">Dietética Horqueta</a>
-                <button class="theme-toggle-btn d-md-none" type="button" id="theme-toggle-mobile" aria-label="Toggle theme">
+                <button class="theme-toggle-btn d-md-none" type="button" id="theme-toggle-mobile" aria-label="Cambiar tema">
                     <svg class="bi theme-icon"><use href="#sun-fill"></use></svg>
                 </button>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -109,11 +135,11 @@
                         </li>
                     </ul>
                     <div class="social-icons">
-                        <a href="https://wa.me/+542477300676" target="_blank"><img src="img/Whatsapp.png" alt="WhatsApp"></a>
-                        <a href="https://www.instagram.com/horqueta.nat/" target="_blank"><img src="img/Instagram.png" alt="Instagram"></a>
-                        <a href="https://www.facebook.com/profile.php?id=100092742533951" target="_blank"><img src="img/Facebook.png" alt="Facebook"></a>
+                        <a href="https://wa.me/+542477300676" class="fa fa-whatsapp" target="_blank" aria-label="Contactar por WhatsApp"></a>
+                        <a href="https://www.instagram.com/horqueta.nat/" class="fa fa-instagram" target="_blank" aria-label="Visitar Instagram"></a>
+                        <a href="https://www.facebook.com/profile.php?id=100092742533951" class="fa fa-facebook" target="_blank" aria-label="Visitar Facebook"></a>
                     </div>
-                    <button class="theme-toggle-btn d-none d-md-block ms-3" type="button" id="theme-toggle" aria-label="Toggle theme">
+                    <button class="theme-toggle-btn d-none d-md-block ms-3" type="button" id="theme-toggle" aria-label="Cambiar tema">
                         <svg class="bi theme-icon"><use href="#sun-fill"></use></svg>
                     </button>
                 </div>
@@ -124,13 +150,13 @@
     <main>
         <div id="myCarousel" class="carousel slide mb-6" data-bs-ride="carousel">
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Diapositiva 1"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Diapositiva 2"></button>
+                <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Diapositiva 3"></button>
             </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="especias.jpeg" class="d-block w-100" alt="Slide 1">
+                    <img src="especias.jpeg" class="d-block w-100" alt="Especias naturales de Dietética Horqueta" width="1200" height="800" loading="eager">
                     <div class="container">
                         <div class="carousel-caption text-start">
                             <h1>Somos Energía</h1>
@@ -140,7 +166,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="especias2.jpeg" class="d-block w-100" alt="Slide 2">
+                    <img src="especias2.jpeg" class="d-block w-100" alt="Condimentos naturales de Dietética Horqueta" width="1200" height="800" loading="lazy">
                     <div class="container">
                         <div class="carousel-caption">
                             <h1>Condimentos Naturales</h1>
@@ -150,7 +176,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="especias.jpeg" class="d-block w-100" alt="Slide 3">
+                    <img src="especias.jpeg" class="d-block w-100" alt="Promociones de Dietética Horqueta" width="1200" height="800" loading="lazy">
                     <div class="container">
                         <div class="carousel-caption text-end">
                             <h1>Promociones Especiales</h1>
@@ -162,30 +188,35 @@
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
+                <span class="visually-hidden">Anterior</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
+                <span class="visually-hidden">Siguiente</span>
             </button>
+            <!-- Controles de pausa/reproducción para accesibilidad -->
+            <div class="carousel-controls">
+                <button type="button" id="carousel-pause" aria-label="Pausar carrusel">Pausar</button>
+                <button type="button" id="carousel-play" aria-label="Reproducir carrusel" disabled>Reproducir</button>
+            </div>
         </div>
 
         <div class="container marketing">
             <div class="row">
                 <div class="col-lg-4">
-                    <img src="especias.jpeg" class="rounded-circle" alt="Frutos Secos" loading="lazy">
+                    <img src="especias.jpeg" class="rounded-circle" alt="Frutos secos de Dietética Horqueta" width="140" height="140" loading="lazy">
                     <h2 class="fw-normal">Frutos Secos</h2>
                     <p>Disfruta de la mejor selección de frutos secos, cargados de energía y vitalidad para tu día a día.</p>
                     <p><a class="btn btn-secondary" href="https://docs.google.com/spreadsheets/d/1bsnIHN3VJ9poi8_6Yr-jXbLJOWqj6LDS-9tJPpGyFMg/edit?usp=sharing">Ver Precios »</a></p>
                 </div>
                 <div class="col-lg-4">
-                    <img src="especias.jpeg" class="rounded-circle" alt="Condimentos" loading="lazy">
+                    <img src="especias.jpeg" class="rounded-circle" alt="Condimentos naturales de Dietética Horqueta" width="140" height="140" loading="lazy">
                     <h2 class="fw-normal">Condimentos</h2>
                     <p>Añade sabor y vida a tus platos con nuestros condimentos 100% naturales.</p>
                     <p><a class="btn btn-secondary" href="https://docs.google.com/spreadsheets/d/1eWL9KOO_OkIcV6d1KvCv7Jnkbhq9SaDv_WfEi2ZdX2E/edit?gid=0#gid=0">Ver Precios »</a></p>
                 </div>
                 <div class="col-lg-4">
-                    <img src="especias.jpeg" class="rounded-circle" alt="Orgánicos" loading="lazy">
+                    <img src="especias.jpeg" class="rounded-circle" alt="Productos orgánicos de Dietética Horqueta" width="140" height="140" loading="lazy">
                     <h2 class="fw-normal">Orgánicos</h2>
                     <p>Nuestros productos orgánicos están libres de pesticidas y conservantes.</p>
                     <p><a class="btn btn-secondary" href="#">Ver Productos »</a></p>
@@ -200,7 +231,7 @@
                     <p class="lead">Disfruta de almendras, nueces, avellanas y mixes, perfectos para un snack saludable.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="img/Fondo frutos.png" class="featurette-image img-fluid mx-auto" alt="Frutos Secos" loading="lazy">
+                    <img src="img/Fondo frutos.png" class="featurette-image img-fluid mx-auto" alt="Frutos secos de alta calidad" width="500" height="500" loading="lazy">
                 </div>
             </div>
 
@@ -212,7 +243,7 @@
                     <p class="lead">Potencia tus recetas con nuestras especias: cúrcuma, pimienta, pimentón y más.</p>
                 </div>
                 <div class="col-md-5 order-md-1">
-                    <img src="especias.jpeg" class="featurette-image img-fluid mx-auto" alt="Condimentos" loading="lazy">
+                    <img src="img/condimentosnaturales.png" class="featurette-image img-fluid mx-auto" alt="Condimentos naturales de alta calidad" width="500" height="500" loading="lazy">
                 </div>
             </div>
 
@@ -224,7 +255,7 @@
                     <p class="lead">Aceites, polen de abeja y más, libres de químicos para un estilo de vida saludable.</p>
                 </div>
                 <div class="col-md-5">
-                    <img src="especias.jpeg" class="featurette-image img-fluid mx-auto" alt="Productos Orgánicos" loading="lazy">
+                    <img src="img/Pan rallado.png" class="featurette-image img-fluid mx-auto" alt="Productos orgánicos sostenibles" width="500" height="500" loading="lazy">
                 </div>
             </div>
 
@@ -238,18 +269,22 @@
     </main>
 
     <!-- Botón flotante de WhatsApp -->
-    <a href="https://wa.me/+542477300676" class="whatsapp-float" target="_blank">
-        <img src="img/Whatsapp.png" alt="WhatsApp" class="whatsapp-icon">
+    <a href="https://wa.me/+542477300676" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <img src="img/Whatsapp.png" alt="Ícono de WhatsApp" class="whatsapp-icon" width="50" height="50">
     </a>
 
-    <!-- Bootstrap JS desde CDN -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
-    <!-- Script para el toggle de tema -->
+    <!-- Script para el toggle de tema y carrusel -->
     <script>
         const themeToggle = document.getElementById('theme-toggle');
         const themeToggleMobile = document.getElementById('theme-toggle-mobile');
         const html = document.documentElement;
+        const carouselEl = document.querySelector('#myCarousel');
+        const carousel = bootstrap.Carousel.getInstance(carouselEl) || new bootstrap.Carousel(carouselEl);
+        const pauseBtn = document.getElementById('carousel-pause');
+        const playBtn = document.getElementById('carousel-play');
 
         function updateThemeIcon() {
             const themeIcon = document.querySelectorAll('.theme-icon');
@@ -272,7 +307,27 @@
         themeToggle.addEventListener('click', toggleTheme);
         themeToggleMobile.addEventListener('click', toggleTheme);
 
-        // Detectar el tema inicial según la preferencia del sistema
+        // Pausar carrusel al hacer hover
+        carouselEl.addEventListener('mouseover', () => {
+            carousel.pause();
+        });
+        carouselEl.addEventListener('mouseout', () => {
+            carousel.cycle();
+        });
+
+        // Controles de pausa/reproducción
+        pauseBtn.addEventListener('click', () => {
+            carousel.pause();
+            pauseBtn.disabled = true;
+            playBtn.disabled = false;
+        });
+        playBtn.addEventListener('click', () => {
+            carousel.cycle();
+            pauseBtn.disabled = false;
+            playBtn.disabled = true;
+        });
+
+        // Detectar tema inicial
         if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             html.setAttribute('data-bs-theme', 'dark');
         } else {
