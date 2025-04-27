@@ -34,6 +34,1762 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
+        /* GLOBAL STYLES */
+:root {
+    --bs-body-bg-light: #FFF8E8; /* Crema cálido */
+    --bs-body-bg-dark: #1A1C20; /* Gris oscuro suave */
+    --navbar-bg-light: #A3D9A5; /* Verde natural */
+    --navbar-bg-dark: #6BAF6D; /* Verde oscuro vibrante */
+    --link-hover-light: #FF6F61; /* Coral cálido */
+    --link-hover-dark: #E65A50; /* Coral oscuro */
+    --btn-primary-light: #FF6F61; /* Coral para botones */
+    --btn-primary-dark: #E65A50; /* Coral oscuro */
+    --btn-primary-hover-light: #FF8A75; /* Coral claro en hover */
+    --btn-primary-hover-dark: #F47A6B; /* Coral claro oscuro */
+    --btn-secondary-light: #A3D9A5; /* Verde natural */
+    --btn-secondary-dark: #6BAF6D; /* Verde oscuro */
+    --btn-secondary-hover-light: #BDE8BF; /* Verde claro en hover */
+    --btn-secondary-hover-dark: #8CCE8F; /* Verde claro oscuro */
+}
+
+html[data-bs-theme="light"] {
+    --bs-body-bg: var(--bs-body-bg-light);
+}
+
+html[data-bs-theme="dark"] {
+    --bs-body-bg: var(--bs-body-bg-dark);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: rgb(var(--bs-tertiary-color-rgb));
+    background-color: var(--bs-body-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, .navbar-brand {
+    font-weight: 600;
+}
+
+p, .lead {
+    font-weight: 300;
+}
+
+html[data-bs-theme="dark"] body {
+    color: #E0E0E0;
+}
+
+html[data-bs-theme="dark"] .lead,
+html[data-bs-theme="dark"] p {
+    color: #C0C0C0;
+}
+
+/* Imágenes con efecto de carga */
+img {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+img.loaded {
+    opacity: 1;
+}
+
+/* NAVBAR */
+.navbar {
+    background-color: var(--navbar-bg-light) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
+}
+
+.navbar-scrolled {
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.navbar .container-fluid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand,
+.nav-link {
+    color: #2C3E50;
+}
+
+html[data-bs-theme="dark"] .navbar-brand,
+html[data-bs-theme="dark"] .nav-link {
+    color: #FFFFFF;
+}
+
+.nav-link {
+    padding: 0.5rem 0.75rem;
+    position: relative;
+    transition: color 0.3s ease;
+    font-size: 1rem;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--link-hover-light);
+    transition: width 0.3s ease;
+}
+
+html[data-bs-theme="dark"] .nav-link::after {
+    background-color: var(--link-hover-dark);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.nav-link:hover {
+    color: var(--link-hover-light);
+}
+
+html[data-bs-theme="dark"] .nav-link:hover {
+    color: var(--link-hover-dark);
+}
+
+.nav-link:focus,
+.btn:focus,
+.theme-toggle-btn:focus,
+.whatsapp-float:focus {
+    outline: 2px solid var(--btn-primary-light);
+    outline-offset: 2px;
+}
+
+html[data-bs-theme="dark"] .nav-link:focus,
+html[data-bs-theme="dark"] .btn:focus,
+html[data-bs-theme="dark"] .theme-toggle-btn:focus,
+html[data-bs-theme="dark"] .whatsapp-float:focus {
+    outline: 2px solid var(--btn-primary-dark);
+}
+
+.nav-link.disabled {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+html[data-bs-theme="dark"] .navbar {
+    background-color: var(--navbar-bg-dark) !important;
+}
+
+.navbar-nav {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.social-icons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+/* CAROUSEL */
+.carousel {
+    margin-bottom: 3rem;
+}
+
+.carousel-caption {
+    bottom: 3rem;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+    transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+.carousel-item.active .carousel-caption {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.carousel-item:not(.active) .carousel-caption {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+}
+
+html[data-bs-theme="dark"] .carousel-caption {
+    color: #FFFFFF;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-item {
+    height: 32rem;
+    position: relative;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
+    z-index: 1;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease-in-out;
+    position: relative;
+    z-index: 0;
+}
+
+.carousel-item.active img {
+    transform: scale(1.02);
+}
+
+.carousel-inner {
+    width: 100%;
+    overflow: hidden;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 10%;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    transition: background 0.3s ease;
+}
+
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.carousel-play-pause-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFFFFF;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    z-index: 20;
+}
+
+.carousel-play-pause-btn i {
+    font-size: 18px;
+}
+
+.carousel-play-pause-btn:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    transform: scale(1.1);
+}
+
+.carousel-play-pause-btn:focus {
+    outline: 2px solid var(--btn-primary-light);
+    outline-offset: 2px;
+}
+
+html[data-bs-theme="dark"] .carousel-play-pause-btn:focus {
+    outline: 2px solid var(--btn-primary-dark);
+}
+
+.carousel-caption .btn {
+    transform: scale(1);
+    transition: transform 0.3s ease;
+}
+
+.carousel-caption .btn:hover {
+    transform: scale(1.05);
+}
+
+/* MARKETING CONTENT */
+.marketing .col-lg-4 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    padding: 0 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 350px;
+}
+
+.marketing .col-lg-4 h2 {
+    font-size: 1.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.marketing .col-lg-4 p {
+    margin-right: 0.75rem;
+    margin-left: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+}
+
+.marketing .col-lg-4 .btn {
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: auto;
+    padding: 0.5rem 1rem;
+    width: auto;
+    min-width: 150px;
+    text-align: center;
+}
+
+.marketing .col-lg-4 .btn.btn-secondary {
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+}
+
+.marketing .col-lg-4 > * {
+    width: 100%;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.marketing .rounded-circle {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* FEATURETTES */
+.featurette-divider {
+    margin: 3rem 0;
+}
+
+.featurette {
+    padding: 2rem 0;
+}
+
+.featurette-heading {
+    letter-spacing: -0.03rem;
+    color: var(--navbar-bg-light);
+    font-size: 2.5rem;
+    transition: color 0.3s ease;
+}
+
+.featurette-heading .text-body-secondary {
+    color: var(--link-hover-light);
+    font-size: 2.5rem;
+    transition: color 0.3s ease;
+}
+
+.featurette .lead {
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+html[data-bs-theme="dark"] .featurette-heading {
+    color: var(--navbar-bg-dark);
+}
+
+html[data-bs-theme="dark"] .featurette-heading .text-body-secondary {
+    color: var(--link-hover-dark);
+}
+
+.featurette-image {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* BUTTONS */
+.btn-primary {
+    background-color: var(--btn-primary-light);
+    border-color: var(--btn-primary-light);
+    padding: 0.5rem 1rem;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--btn-primary-hover-light);
+    border-color: var(--btn-primary-hover-light);
+}
+
+.btn-secondary {
+    background-color: var(--btn-secondary-light);
+    border-color: var(--btn-secondary-light);
+    color: #3A7C5A;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: var(--btn-secondary-hover-light);
+    border-color: var(--btn-secondary-hover-light);
+    color: #3A7C5A;
+}
+
+html[data-bs-theme="dark"] .btn-primary {
+    background-color: var(--btn-primary-dark);
+    border-color: var(--btn-primary-dark);
+}
+
+html[data-bs-theme="dark"] .btn-primary:hover {
+    background-color: var(--btn-primary-hover-dark);
+    border-color: var(--btn-primary-hover-dark);
+}
+
+html[data-bs-theme="dark"] .btn-secondary {
+    background-color: var(--btn-secondary-dark);
+    border-color: var(--btn-secondary-dark);
+    color: #FFFFFF;
+}
+
+html[data-bs-theme="dark"] .btn-secondary:hover {
+    background-color: var(--btn-secondary-hover-dark);
+    border-color: var(--btn-secondary-hover-dark);
+    color: #FFFFFF;
+}
+
+/* FOOTER */
+footer {
+    padding: 1rem 0;
+    background-color: transparent;
+    text-align: center;
+}
+
+footer a {
+    color: var(--link-hover-light);
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--btn-primary-hover-light);
+}
+
+html[data-bs-theme="dark"] footer a {
+    color: var(--link-hover-dark);
+}
+
+html[data-bs-theme="dark"] footer a:hover {
+    color: var(--btn-primary-hover-dark);
+}
+
+/* WHATSAPP FLOAT BUTTON */
+.whatsapp-float {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    z-index: 1000;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.whatsapp-float:hover .whatsapp-icon {
+    transform: scale(1.2);
+    animation: none;
+}
+
+.whatsapp-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* MODO OSCURO PARA SVG */
+html[data-bs-theme="dark"] .bi {
+    fill: #FFFFFF;
+}
+
+/* RESPONSIVE STYLES */
+
+/* Pantallas muy pequeñas (xs, <576px) */
+@media (max-width: 575.98px) {
+    body {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
+    }
+
+    .navbar {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .navbar-brand {
+        font-size: 0.9rem;
+        text-align: center;
+        display: block;
+    }
+
+    .navbar-toggler {
+        padding: 0.4rem;
+    }
+
+    .navbar-toggler-icon {
+        width: 1em;
+        height: 1em;
+    }
+
+    .theme-toggle-btn {
+        padding: 0.4rem;
+        margin-right: 0.4rem;
+    }
+
+    .theme-toggle-btn .bi {
+        width: 1em;
+        height: 1em;
+    }
+
+    .nav-link {
+        font-size: 0.8rem;
+        text-align: center;
+        padding: 0.5rem 0.75rem;
+        line-height: 1.4;
+    }
+
+    .social-icons {
+        justify-content: center;
+        gap: 10px;
+        margin-top: 0.5rem;
+    }
+
+    .carousel-item {
+        height: 10rem;
+    }
+
+    .carousel-caption {
+        bottom: 0.1rem;
+        padding: 0.1rem;
+        text-align: center;
+    }
+
+    .carousel-caption.text-start,
+    .carousel-caption.text-end {
+        text-align: center;
+    }
+
+    .carousel-caption h1 {
+        font-size: 0.9rem;
+        margin: 0 auto;
+        line-height: 1.2;
+    }
+
+    .carousel-caption p {
+        font-size: 0.6rem;
+        margin: 0.1rem auto;
+        line-height: 1.3;
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.6rem;
+        padding: 0.3rem 0.6rem;
+        display: block;
+        margin: 0.2rem auto;
+        min-width: 100px;
+    }
+
+    .carousel-play-pause-btn {
+        width: 25px;
+        height: 25px;
+        top: 5px;
+        right: 5px;
+    }
+
+    .carousel-play-pause-btn i {
+        font-size: 12px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 15%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 15px;
+        height: 15px;
+    }
+
+    .marketing .col-lg-4 {
+        margin-bottom: 1rem;
+        padding: 0 0.5rem;
+        min-height: 300px;
+    }
+
+    .marketing .col-lg-4 h2 {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+        line-height: 1.3;
+    }
+
+    .marketing .col-lg-4 p {
+        font-size: 0.75rem;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .marketing .col-lg-4 .btn {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+        min-width: 120px;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: auto;
+    }
+
+    .marketing .col-lg-4 .btn.btn-secondary {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .marketing .col-lg-4 > * {
+        max-width: 250px;
+    }
+
+    .marketing .rounded-circle {
+        width: 80px;
+        height: 80px;
+    }
+
+    .featurette-divider {
+        margin: 1.5rem 0;
+    }
+
+    .featurette-heading {
+        font-size: 1rem;
+        line-height: 1.2;
+    }
+
+    .featurette-heading .text-body-secondary {
+        font-size: 1rem;
+    }
+
+    .featurette .lead {
+        font-size: 0.8rem;
+        margin: 0.5rem auto;
+        max-width: 90%;
+        line-height: 1.4;
+    }
+
+    .featurette-image {
+        max-width: 150px;
+    }
+
+    .whatsapp-float {
+        bottom: 50px;
+        right: 10px;
+    }
+
+    .whatsapp-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .back-to-top {
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Pantallas pequeñas (sm, 576px - 767px) */
+@media (min-width: 576px) and (max-width: 767.98px) {
+    body {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .navbar {
+        padding: 0.5rem 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1rem;
+        text-align: center;
+        display: block;
+    }
+
+    .navbar-toggler {
+        padding: 0.5rem;
+    }
+
+    .navbar-toggler-icon {
+        width: 1.25em;
+        height: 1.25em;
+    }
+
+    .theme-toggle-btn {
+        padding: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .theme-toggle-btn .bi {
+        width: 1.25em;
+        height: 1.25em;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        text-align: center;
+        padding: 0.75rem 1rem;
+        line-height: 1.5;
+    }
+
+    .social-icons {
+        justify-content: center;
+        gap: 12px;
+        margin-top: 0.5rem;
+    }
+
+    .carousel-item {
+        height: 12rem;
+    }
+
+    .carousel-caption {
+        bottom: 0.2rem;
+        padding: 0.2rem;
+        text-align: center;
+    }
+
+    .carousel-caption.text-start,
+    .carousel-caption.text-end {
+        text-align: center;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1rem;
+        margin: 0 auto;
+        line-height: 1.3;
+    }
+
+    .carousel-caption p {
+        font-size: 0.7rem;
+        margin: 0.2rem auto;
+        line-height: 1.4;
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.7rem;
+        padding: 0.4rem 0.8rem;
+        display: block;
+        margin: 0.3rem auto;
+        min-width: 110px;
+    }
+
+    .carousel-play-pause-btn {
+        width: 30px;
+        height: 30px;
+        top: 6px;
+        right: 6px;
+    }
+
+    .carousel-play-pause-btn i {
+        font-size: 14px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 12%;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .marketing .col-lg-4 {
+        margin-bottom: 1.2rem;
+        padding: 0 0.5rem;
+        min-height: 320px;
+    }
+
+    .marketing .col-lg-4 h2 {
+        font-size: 1.1rem;
+        margin: 0.5rem 0;
+        line-height: 1.3;
+    }
+
+    .marketing .col-lg-4 p {
+        font-size: 0.8rem;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.4;
+    }
+
+    .marketing .col-lg-4 .btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        min-width: 130px;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: auto;
+    }
+
+    .marketing .col-lg-4 .btn.btn-secondary {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .marketing .col-lg-4 > * {
+        max-width: 280px;
+    }
+
+    .marketing .rounded-circle {
+        width: 90px;
+        height: 90px;
+    }
+
+    .featurette-divider {
+        margin: 2rem 0;
+    }
+
+    .featurette-heading {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+
+    .featurette-heading .text-body-secondary {
+        font-size: 1.2rem;
+    }
+
+    .featurette .lead {
+        font-size: 0.9rem;
+        margin: 0.5rem auto;
+        max-width: 90%;
+        line-height: 1.4;
+    }
+
+    .featurette-image {
+        max-width: 180px;
+    }
+
+    .whatsapp-float {
+        bottom: 60px;
+        right: 15px;
+    }
+
+    .whatsapp-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .back-to-top {
+        width: 35px;
+        height: 35px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Específico para 768x824 píxeles */
+@media (min-width: 768px) and (max-width: 768px) and (max-height: 824px) {
+    body {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .navbar {
+        padding: 0.4rem 0.75rem; /* Padding más compacto */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+
+    .navbar-scrolled {
+        padding: 0.4rem 0.75rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar .container-fluid {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: nowrap;
+    }
+
+    .navbar-brand {
+        font-size: 0.85rem; /* Letras más pequeñas */
+        margin-left: 0.3rem; /* Margen reducido */
+        flex-grow: 1;
+        text-align: left;
+    }
+
+    .navbar-toggler {
+        padding: 0.3rem;
+        order: 2;
+    }
+
+    .navbar-toggler-icon {
+        width: 1em;
+        height: 1em;
+    }
+
+    .navbar-nav {
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.6rem;
+        text-align: center;
+    }
+
+    .social-icons {
+        display: flex;
+        gap: 8px; /* Reducir espacio entre íconos */
+        margin-right: 0.5rem; /* Margen derecho más pequeño */
+        margin-left: 0.3rem;
+        order: 3;
+        align-items: center;
+    }
+
+    .fa {
+        font-size: 12px; /* Íconos aún más pequeños */
+        width: 24px; /* Contenedor más pequeño */
+        height: 24px;
+        padding: 5px;
+    }
+
+    .theme-toggle-btn {
+        padding: 0.2rem; /* Reducir padding */
+        margin-right: 0.3rem; /* Margen más pequeño */
+        order: 4;
+    }
+
+    .theme-toggle-btn .bi {
+        width: 0.8em; /* Ícono más pequeño */
+        height: 0.8em;
+    }
+
+    .carousel-item {
+        height: 14rem;
+    }
+
+    .carousel-caption {
+        bottom: 0.3rem;
+        padding: 0.3rem;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.1rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.7rem;
+        max-width: 90%;
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+        min-width: 100px;
+    }
+
+    .marketing .col-lg-4 {
+        margin-bottom: 1.2rem;
+        padding: 0 0.4rem;
+        min-height: 340px;
+    }
+
+    .marketing .col-lg-4 h2 {
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+
+    .marketing .col-lg-4 p {
+        font-size: 0.8rem;
+        margin-right: 0.4rem;
+        margin-left: 0.4rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .marketing .col-lg-4 .btn {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+        min-width: 110px;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: auto;
+        line-height: 1.4;
+    }
+
+    .marketing .col-lg-4 .btn.btn-secondary {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .marketing .col-lg-4 > * {
+        max-width: 260px;
+    }
+
+    .marketing .rounded-circle {
+        width: 90px;
+        height: 90px;
+    }
+
+    .featurette-heading {
+        font-size: 1.4rem;
+    }
+
+    .featurette .lead {
+        font-size: 0.9rem;
+    }
+
+    .featurette-image {
+        max-width: 200px;
+    }
+
+    .whatsapp-float {
+        bottom: 50px;
+        right: 10px;
+    }
+
+    .whatsapp-icon {
+        width: 35px;
+        height: 35px;
+    }
+
+    .back-to-top {
+        bottom: 10px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Pantallas medianas (md, 768px - 991px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    body {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    .navbar-toggler {
+        padding: 0.5rem;
+    }
+
+    .navbar-toggler-icon {
+        width: 1.25em;
+        height: 1.25em;
+    }
+
+    .theme-toggle-btn {
+        padding: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .theme-toggle-btn .bi {
+        width: 1.25em;
+        height: 1.25em;
+    }
+
+    .nav-link {
+        font-size: 0.95rem;
+        padding: 0.75rem 1rem;
+    }
+
+    .social-icons {
+        gap: 15px;
+    }
+
+    .carousel-item {
+        height: 16rem;
+    }
+
+    .carousel-caption {
+        bottom: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+
+    .carousel-caption p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.8rem;
+        padding: 0.5rem 1rem;
+        min-width: 130px;
+    }
+
+    .marketing .col-lg-4 {
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+        min-height: 340px;
+    }
+
+    .marketing .col-lg-4 h2 {
+        font-size: 1.2rem;
+        line-height: 1.3;
+    }
+
+    .marketing .col-lg-4 p {
+        font-size: 0.9rem;
+        margin-right: 0.75rem;
+        margin-left: 0.75rem;
+        margin-bottom: 0.75rem;
+        line-height: 1.5;
+    }
+
+    .marketing .col-lg-4 .btn {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+        min-width: 140px;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: auto;
+    }
+
+    .marketing .col-lg-4 .btn.btn-secondary {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .marketing .col-lg-4 > * {
+        max-width: 300px;
+    }
+
+    .marketing .rounded-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .featurette-divider {
+        margin: 2.5rem 0;
+    }
+
+    .featurette-heading {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    .featurette-heading .text-body-secondary {
+        font-size: 1.5rem;
+    }
+
+    .featurette .lead {
+        font-size: 1rem;
+        max-width: 90%;
+        line-height: 1.5;
+    }
+
+    .featurette-image {
+        max-width: 220px;
+    }
+}
+
+/* Pantallas grandes (lg, 992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .navbar-nav {
+        gap: 0.5rem;
+    }
+
+    .nav-link {
+        font-size: 0.9rem;
+        padding: 0.5rem 0.6rem;
+    }
+
+    .social-icons {
+        gap: 8px;
+        margin-right: 0.5rem;
+    }
+
+    .theme-toggle-btn {
+        padding: 0.3rem;
+    }
+
+    .theme-toggle-btn .bi {
+        width: 1.2em;
+        height: 1.2em;
+    }
+
+    .carousel-item {
+        height: 18rem;
+    }
+
+    .carousel-caption {
+        bottom: 0.8rem;
+        padding: 0.4rem;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.3rem;
+        line-height: 1.2;
+    }
+
+    .carousel-caption p {
+        font-size: 0.8rem;
+        max-width: 85%;
+        line-height: 1.3;
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+        min-width: 120px;
+    }
+
+    .carousel-play-pause-btn {
+        width: 35px;
+        height: 35px;
+        top: 8px;
+        right: 8px;
+    }
+
+    .carousel-play-pause-btn i {
+        font-size: 16px;
+    }
+
+    .marketing .col-lg-4 {
+        margin-bottom: 1.2rem;
+        padding: 0 0.4rem;
+        min-height: 360px;
+    }
+
+    .marketing .col-lg-4 h2 {
+        font-size: 1.2rem;
+        line-height: 1.2;
+    }
+
+    .marketing .col-lg-4 p {
+        font-size: 0.85rem;
+        margin-right: 0.5rem;
+        margin-left: 0.5rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .marketing .col-lg-4 .btn {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+        min-width: 130px;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: auto;
+        line-height: 1.4;
+    }
+
+    .marketing .col-lg-4 .btn.btn-secondary {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .marketing .col-lg-4 > * {
+        max-width: 280px;
+    }
+
+    .marketing .rounded-circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .featurette-divider {
+        margin: 2rem 0;
+    }
+
+    .featurette-heading {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .featurette-heading .text-body-secondary {
+        font-size: 1.8rem;
+    }
+
+    .featurette .lead {
+        font-size: 1rem;
+        max-width: 85%;
+        line-height: 1.4;
+    }
+
+    .featurette-image {
+        max-width: 300px;
+    }
+
+    .whatsapp-float {
+        bottom: 70px;
+        right: 15px;
+    }
+
+    .whatsapp-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .back-to-top {
+        bottom: 15px;
+        left: 15px;
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+    }
+}
+
+/* Específico para 1024x824 píxeles */
+@media (min-width: 1000px) and (max-width: 1024px) and (max-height: 824px) {
+    body {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .navbar {
+        padding: 0.75rem 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s ease;
+    }
+
+    .navbar-scrolled {
+        padding: 0.75rem 1rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-nav {
+        gap: 0.4rem;
+    }
+
+    .nav-link {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 0.95rem;
+    }
+
+    .social-icons {
+        gap: 6px;
+        margin-right: 0.4rem;
+    }
+
+    .fa {
+        font-size: 16px;
+        width: 30px;
+        height: 30px;
+        padding: 7px;
+    }
+
+    .theme-toggle-btn {
+        padding: 0.25rem;
+    }
+
+    .theme-toggle-btn .bi {
+        width: 1em;
+        height: 1em;
+    }
+
+    .carousel-item {
+        height: 16rem;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.2rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.75rem;
+        max-width: 90%;
+    }
+
+    .carousel-caption .btn {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.7rem;
+        min-width: 110px;
+    }
+
+    .marketing .col-lg-4 {
+        margin-bottom: 1rem;
+        padding: 0 0.3rem;
+        min-height: 380px;
+    }
+
+    .marketing .col-lg-4 h2 {
+        font-size: 1.1rem;
+        line-height: 1.2;
+    }
+
+    .marketing .col-lg-4 p {
+        font-size: 0.8rem;
+        margin-right: 0.4rem;
+        margin-left: 0.4rem;
+        margin-bottom: 0.8rem;
+        line-height: 1.4;
+    }
+
+    .marketing .col-lg-4 .btn {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+        min-width: 110px;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: auto;
+        line-height: 1.4;
+    }
+
+    .marketing .col-lg-4 .btn.btn-secondary {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .marketing .col-lg-4 > * {
+        max-width: 260px;
+    }
+
+    .marketing .rounded-circle {
+        width: 90px;
+        height: 90px;
+    }
+
+    .featurette-heading {
+        font-size: 1.6rem;
+    }
+
+    .featurette .lead {
+        font-size: 0.9rem;
+    }
+
+    .featurette-image {
+        max-width: 280px;
+    }
+
+    .whatsapp-float {
+        bottom: 60px;
+        right: 10px;
+    }
+
+    .whatsapp-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .back-to-top {
+        bottom: 10px;
+        left: 10px;
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Pantallas extra grandes (xl, 1200px - 1399px) */
+@media (min-width: 1200px) and (max-width: 1399.98px) {
+    .carousel-item {
+        height: 28rem;
+    }
+
+    .carousel-caption {
+        bottom: 2rem;
+    }
+
+    .carousel-caption h1 {
+        font-size: 2rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.1rem;
+    }
+
+    .carousel-caption .btn {
+        font-size: 1rem;
+        padding: 0.6rem 1.2rem;
+    }
+
+    .marketing .col-lg-4 {
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+        min-height: 400px;
+    }
+
+    .marketing .col-lg-4 h2 {
+        font-size: 1.5rem;
+    }
+
+    .marketing .col-lg-4 p {
+        font-size: 1rem;
+        margin-right: 0.75rem;
+        margin-left: 0.75rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    .marketing .col-lg-4 .btn {
+        font-size: 1rem;
+        padding: 0.5rem 1rem;
+        min-width: 150px;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: auto;
+    }
+
+    .marketing .col-lg-4 .btn.btn-secondary {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .marketing .col-lg-4 > * {
+        max-width: 300px;
+    }
+
+    .marketing .rounded-circle {
+        width: 120px;
+        height: 120px;
+    }
+
+    .featurette-heading {
+        font-size: 2.5rem;
+    }
+
+    .featurette-heading .text-body-secondary {
+        font-size: 2.5rem;
+    }
+
+    .featurette .lead {
+        font-size: 1.25rem;
+        line-height: 1.5;
+    }
+
+    .featurette-image {
+        max-width: 450px;
+    }
+}
+
+/* Pantallas ultra grandes (xxl, ≥1400px) */
+@media (min-width: 1400px) {
+    .carousel-item {
+        height: 36rem;
+    }
+
+    .carousel-caption {
+        bottom: 4rem;
+    }
+
+    .carousel-caption h1 {
+        font-size: 3rem;
+    }
+
+    .carousel-caption p {
+        font-size: 1.5rem;
+        line-height: 1.4;
+    }
+
+    .carousel-caption .btn {
+        font-size: 1.2rem;
+        padding: 0.8rem 1.6rem;
+    }
+
+    .marketing .col-lg-4 {
+        margin-bottom: 1.5rem;
+        padding: 0 0.5rem;
+        min-height: 420px;
+    }
+
+    .marketing .col-lg-4 h2 {
+        font-size: 1.6rem;
+    }
+
+    .marketing .col-lg-4 p {
+        font-size: 1.1rem;
+        margin-right: 0.75rem;
+        margin-left: 0.75rem;
+        margin-bottom: 1rem;
+        line-height: 1.5;
+    }
+
+    .marketing .col-lg-4 .btn {
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+        min-width: 150px;
+        display: inline-block;
+        margin: 0 auto;
+        margin-top: auto;
+    }
+
+    .marketing .col-lg-4 .btn.btn-secondary {
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+        width: auto;
+    }
+
+    .marketing .col-lg-4 > * {
+        max-width: 300px;
+    }
+
+    .marketing .rounded-circle {
+        width: 140px;
+        height: 140px;
+    }
+
+    .featurette-heading {
+        font-size: 3.5rem;
+        margin-top: 8rem;
+    }
+
+    .featurette-heading .text-body-secondary {
+        font-size: 3.5rem;
+    }
+
+    .featurette .lead {
+        font-size: 1.75rem;
+        line-height: 1.5;
+    }
+
+    .featurette-image {
+        max-width: 600px;
+    }
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.b-example-divider {
+    width: 100%;
+    height: 3rem;
+    background-color: rgba(0, 0, 0, .1);
+    border: solid rgba(0, 0, 0, .15);
+    border-width: 1px 0;
+    box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    padding: 0.4rem;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.theme-toggle-btn .bi {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+.fa {
+    background-color: var(--btn-secondary-light);
+    border-radius: 50%;
+    padding: 8px;
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+html[data-bs-theme="dark"] .fa {
+    background-color: var(--btn-secondary-dark);
+}
+
+.fa:hover {
+    background-color: var(--btn-secondary-hover-light);
+    transform: scale(1.1);
+}
+
+html[data-bs-theme="dark"] .fa:hover {
+    background-color: var(--btn-secondary-hover-dark);
+}
 
         
         
